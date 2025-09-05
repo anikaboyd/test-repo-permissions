@@ -19,7 +19,6 @@ from .pet_update_by_id_params import PetUpdateByIDParams as PetUpdateByIDParams
 from .pet_upload_image_params import PetUploadImageParams as PetUploadImageParams
 from .pet_find_by_status_params import PetFindByStatusParams as PetFindByStatusParams
 from .pet_find_by_tags_response import PetFindByTagsResponse as PetFindByTagsResponse
-from .pet_upload_image_response import PetUploadImageResponse as PetUploadImageResponse
 from .pet_find_by_status_response import PetFindByStatusResponse as PetFindByStatusResponse
 from .user_create_with_list_params import UserCreateWithListParams as UserCreateWithListParams
 from .store_list_inventory_response import StoreListInventoryResponse as StoreListInventoryResponse

@@ -30,7 +30,6 @@ from ..types.pet import Pet
 from .._base_client import make_request_options
 from ..types.category_param import CategoryParam
 from ..types.pet_find_by_tags_response import PetFindByTagsResponse
-from ..types.pet_upload_image_response import PetUploadImageResponse
 from ..types.pet_find_by_status_response import PetFindByStatusResponse
 
 __all__ = ["PetsResource", "AsyncPetsResource"]
@@ -353,7 +352,7 @@ class PetsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PetUploadImageResponse:
+    ) -> None:
         """
         uploads an image
 
@@ -368,7 +367,8 @@ class PetsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/octet-stream"
         return self._post(
             f"/pet/{pet_id}/uploadImage",
             body=read_file_content(image),
@@ -381,7 +381,7 @@ class PetsResource(SyncAPIResource):
                     {"additional_metadata": additional_metadata}, pet_upload_image_params.PetUploadImageParams
                 ),
             ),
-            cast_to=PetUploadImageResponse,
+            cast_to=NoneType,
         )
 
 
@@ -702,7 +702,7 @@ class AsyncPetsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PetUploadImageResponse:
+    ) -> None:
         """
         uploads an image
 
@@ -717,7 +717,8 @@ class AsyncPetsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        extra_headers["Content-Type"] = "application/octet-stream"
         return await self._post(
             f"/pet/{pet_id}/uploadImage",
             body=await async_read_file_content(image),
@@ -730,7 +731,7 @@ class AsyncPetsResource(AsyncAPIResource):
                     {"additional_metadata": additional_metadata}, pet_upload_image_params.PetUploadImageParams
                 ),
             ),
-            cast_to=PetUploadImageResponse,
+            cast_to=NoneType,
         )
 
 
