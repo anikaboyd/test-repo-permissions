@@ -12,5 +12,3 @@ __all__ = ["PetUploadImageParams"]
 class PetUploadImageParams(TypedDict, total=False):
     additional_metadata: Annotated[str, PropertyInfo(alias="additionalMetadata")]
     """Additional Metadata"""
-
-    image: str
