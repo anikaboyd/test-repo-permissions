@@ -335,8 +335,8 @@ class TestPets:
     def test_method_upload_image_with_all_params(self, client: TestProjectAnikaB) -> None:
         pet = client.pets.upload_image(
             pet_id=0,
-            image=b"raw file contents",
             additional_metadata="additionalMetadata",
+            image="image",
         )
         assert_matches_type(PetUploadImageResponse, pet, path=["response"])
 
@@ -685,8 +685,8 @@ class TestAsyncPets:
     async def test_method_upload_image_with_all_params(self, async_client: AsyncTestProjectAnikaB) -> None:
         pet = await async_client.pets.upload_image(
             pet_id=0,
-            image=b"raw file contents",
             additional_metadata="additionalMetadata",
+            image="image",
         )
         assert_matches_type(PetUploadImageResponse, pet, path=["response"])
 

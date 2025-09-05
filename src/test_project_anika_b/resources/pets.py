@@ -15,7 +15,7 @@ from ..types import (
     pet_upload_image_params,
     pet_find_by_status_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -343,9 +343,9 @@ class PetsResource(SyncAPIResource):
     def upload_image(
         self,
         pet_id: int,
-        image: FileTypes | NotGiven = NOT_GIVEN,
         *,
         additional_metadata: str | NotGiven = NOT_GIVEN,
+        image: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -691,9 +691,9 @@ class AsyncPetsResource(AsyncAPIResource):
     async def upload_image(
         self,
         pet_id: int,
-        image: FileTypes | NotGiven = NOT_GIVEN,
         *,
         additional_metadata: str | NotGiven = NOT_GIVEN,
+        image: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
