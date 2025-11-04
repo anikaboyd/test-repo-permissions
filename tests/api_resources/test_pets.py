@@ -12,7 +12,6 @@ from test_project_anika_b import TestProjectAnikaB, AsyncTestProjectAnikaB
 from test_project_anika_b.types import (
     Pet,
     PetFindByTagsResponse,
-    PetUploadImageResponse,
     PetFindByStatusResponse,
 )
 
@@ -329,7 +328,7 @@ class TestPets:
             pet_id=0,
             image=b"raw file contents",
         )
-        assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+        assert pet is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -339,7 +338,7 @@ class TestPets:
             image=b"raw file contents",
             additional_metadata="additionalMetadata",
         )
-        assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+        assert pet is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -352,7 +351,7 @@ class TestPets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pet = response.parse()
-        assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+        assert pet is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -365,7 +364,7 @@ class TestPets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pet = response.parse()
-            assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+            assert pet is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -682,7 +681,7 @@ class TestAsyncPets:
             pet_id=0,
             image=b"raw file contents",
         )
-        assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+        assert pet is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -692,7 +691,7 @@ class TestAsyncPets:
             image=b"raw file contents",
             additional_metadata="additionalMetadata",
         )
-        assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+        assert pet is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -705,7 +704,7 @@ class TestAsyncPets:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         pet = await response.parse()
-        assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+        assert pet is None
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
@@ -718,6 +717,6 @@ class TestAsyncPets:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             pet = await response.parse()
-            assert_matches_type(PetUploadImageResponse, pet, path=["response"])
+            assert pet is None
 
         assert cast(Any, response.is_closed) is True
